@@ -1,9 +1,10 @@
 package com.rules.money
 import com.example.demo.modal.Product
+global com.example.demo.service.impl.EmailServiceImpl email
 rule MoneyLimit
 when
 productObject : Product(money > 9)
 then
 System.out.println("价格超出限制");
-com.example.demo.service.impl.EmailServiceImpl.send();
+email.send();
 end

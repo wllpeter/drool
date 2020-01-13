@@ -41,4 +41,11 @@ public class RiskController {
         }
         return DataInfo.success("发送成功");
     }
+
+    @ApiOperation(value = "发送邮件")
+    @RequestMapping(value = "/sendSimpleMail", method = RequestMethod.POST)
+    public DataInfo<String> sendSimpleMail() {
+        emailService.sendSimpleMail();
+        return DataInfo.success("发送成功");
+    }
 }

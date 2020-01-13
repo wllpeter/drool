@@ -5,7 +5,8 @@ import com.example.demo.service.EmailService;
 import org.apache.poi.hssf.usermodel.*;
 import org.apache.poi.hssf.util.HSSFColor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
@@ -30,12 +31,31 @@ import java.util.List;
 public class EmailServiceImpl implements EmailService {
 
     @Autowired
-    private JavaMailSender mailSender;
+    private JavaMailSenderImpl mailSender;
 
     public static void send(){
         EmailServiceImpl service = new EmailServiceImpl();
-        service.sendEmailHaveAttachment();
+        service.sendSimpleMail();
     }
+
+    public void sendSimpleMail(){
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setTo("zhushuiyang@paixueche.com");
+        message.setSubject("测试");
+        message.setText("朱水洋是富二代吗？");
+        message.setFrom("13162579298@163.com");
+        if(mailSender == null){
+            mailSender = new JavaMailSenderImpl();
+            mailSender.setUsername("13162579298@163.com");
+            mailSender.setHost("smtp.163.com");
+            mailSender.setPassword("wll1994629520");
+            mailSender.setPort(25);
+            mailSender.setProtocol("smtp");
+            mailSender.setDefaultEncoding("UTF-8");
+        }
+        mailSender.send(message);
+    }
+
 
     public  Boolean sendEmailHaveAttachment() {
         Boolean result = false;
