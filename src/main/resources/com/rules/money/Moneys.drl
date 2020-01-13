@@ -1,0 +1,9 @@
+package com.rules.money
+import com.example.demo.modal.Product
+rule MoneyLimit
+when
+productObject : Product(money > 9)
+then
+System.out.println("价格超出限制");
+com.example.demo.service.impl.EmailServiceImpl.send();
+end

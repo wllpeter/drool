@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kmodule xmlns="http://www.drools.org/xsd/kmodule">
-    <kbase name="rules" packages="com.rules">
-        <ksession name="ksession-rule"/>
+    <kbase name="rules" packages="com.rules.common">
+        <ksession name="session-rule"/>
+    </kbase>
+    <kbase name="moneys" packages="com.rules.money">
+        <ksession name="session-money"/>
     </kbase>
 </kmodule>

@@ -8,6 +8,15 @@ public class Product {
     public static final String GOLD = "GOLD"; // 黄金
     private String type;
     private int discount;
+    private int money;
+
+    public int getMoney() {
+        return money;
+    }
+
+    public void setMoney(int money) {
+        this.money = money;
+    }
 
     public String getType() {
         return type;
